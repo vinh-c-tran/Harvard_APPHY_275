@@ -47,9 +47,19 @@ There are many parameters and things to consider and explanations can be found i
 
 There are many ways to do this: such as running a shell script or using TCL scripts. Likewise though, we can do this in Python, and in particular use a Jupyter notebook which allows a convenient interface for plotting. 
 
+```mermaid
+graph LR;
+    id1([Input File]) --> id2([pw.x -in ge.scf.in > ge.scf.out]);
+    id2 --> id3([Output File]);
+    id3 --> id4([Data Array]);
+    id3 --> id5([Update ecutwfc]);
+    id5 --> id1; 
+```
+
 ## Python Scripting in Jupyter 
 
 
 
 ## Results 
-<img width="1920" alt="Screen Shot 2022-03-18 at 4 46 18 PM" src="https://user-images.githubusercontent.com/76876169/159097617-64e0578c-eb97-48ae-b714-2acf00a96fe4.png">
+<img width="800" alt="Screen Shot 2022-03-18 at 4 46 27 PM" src="https://user-images.githubusercontent.com/76876169/159097636-582cf54e-d133-4b8d-901f-c9fc7980bc18.png">
+
