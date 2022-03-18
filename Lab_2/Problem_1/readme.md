@@ -20,6 +20,7 @@ When we perform a SCF calculation, we have many parameters that we can tune, one
 The core of each PW scf calculation starts with an input file that we can call `ge.scf.in` for our case of a scf calculation for Ge. To run this calculation, we would call `pw.x -in ge.scf.in > ge.scf.out` where `ge.scf.out` is the output file (assuming that `pw.x` is in our path). In particular, the input file that we use will look like 
 ```
 &control
+    calculation = 'scf' 
     prefix = 'Germanium',
     pseudo_dir = '/Users/vinhtran/Documents/GitHub/DFT/First_Principles_Energy_Methods/Problem_1',
     outdir = '.',
@@ -42,3 +43,13 @@ K_POINTS automatic
  8 8 8 0 0 0
 
 ```
+There are many parameters and things to consider and explanations can be found in the quantum espresso pw input file documentation. Relevant for us though is `ecutwfc` which specifies the cut off energy in Ry. So if we were to run this program for this specific input file, we would be able to get the total energy for a cut off energy of 80.0 Ry. Then in principle, we could simply change this value in the input file and manually call `pw.x -in ge.scf.in > ge.scf.out` each time and record the subsequent energy value. However, this becomes tedious. There is a better way! 
+
+There are many ways to do this: such as running a shell script or using TCL scripts. Likewise though, we can do this in Python, and in particular use a Jupyter notebook which allows a convenient interface for plotting. 
+
+## Python Scripting in Jupyter 
+
+
+
+## Results 
+<img width="1920" alt="Screen Shot 2022-03-18 at 4 46 18 PM" src="https://user-images.githubusercontent.com/76876169/159097617-64e0578c-eb97-48ae-b714-2acf00a96fe4.png">
