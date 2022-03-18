@@ -17,7 +17,28 @@ When we perform a SCF calculation, we have many parameters that we can tune, one
 
 ## Input File
 
-The core of each PW scf calculation starts with an input file that we can call `ge.scf.in` for our case of a scf calculation for Ge. In particular, the one that we use will look like 
+The core of each PW scf calculation starts with an input file that we can call `ge.scf.in` for our case of a scf calculation for Ge. To run this calculation, we would call `pw.x -in ge.scf.in > ge.scf.out` where `ge.scf.out` is the output file (assuming that `pw.x` is in our path). In particular, the input file that we use will look like 
 ```
 &control
+    prefix = 'Germanium',
+    pseudo_dir = '/Users/vinhtran/Documents/GitHub/DFT/First_Principles_Energy_Methods/Problem_1',
+    outdir = '.',
+/
+&system
+    ibrav = 2,
+    celldm(1) = 10.690181,
+    nat = 2,
+    ntyp = 1,
+    ecutwfc = 80.0,
+/
+&electrons
+/
+ATOMIC_SPECIES
+ Ge 72.64 ge_pbe_v1.4.uspp.F.UPF
+ATOMIC_POSITIONS
+ Ge 0.00 0.00 0.00
+ Ge 0.25 0.25 0.25
+K_POINTS automatic
+ 8 8 8 0 0 0
+
 ```
