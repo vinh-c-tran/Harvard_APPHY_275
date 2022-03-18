@@ -5,3 +5,11 @@ A. Using Quantum Espresso PWscf, calculate the energy of Ge in the diamond struc
 B. Do you see a trend in your calculated energies and calculation time with respect to the cutoff? Is this what you expect and why? 
 
 C. Cubic unit cell vs primitive cell. Advantages and disadvantages of both?
+
+## Background Information
+
+This problem allows for the use of two main ideas
+- Setting up a standard SCF calculation in quantum espresso for a specified structure (and get the absolute energy).
+- Scripting to automate the changing/iteration of the cut off energies. This we can do in python to generate the input files and call 'pw.x' via command line tools in python. 
+
+When we perform a SCF calculation, we have many parameters that we can tune, one of which being the plane-wave cut off as we truncate our sum over plane waves for numerical calculations. As we increase the energy cut off, we'd expect our results to converge closer to the converged value. 
