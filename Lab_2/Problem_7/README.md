@@ -88,3 +88,7 @@ def energy_vs_lattice(lattice_array):
         
     return energy_array
 ```
+### Part 1: Results 
+<p align="center">
+<img width="708" alt="Screen Shot 2022-03-19 at 5 21 25 AM" src="https://user-images.githubusercontent.com/76876169/159120884-5b3c3ffa-6039-4d88-8273-8ab084289e2e.png">
+</p>
