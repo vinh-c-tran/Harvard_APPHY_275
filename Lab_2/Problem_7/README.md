@@ -97,11 +97,14 @@ def energy_vs_lattice(lattice_array):
 ## Part 2
 We start by noting that  
 ```math
-    P = - dE/dV = - dE/da * da/dV
+    dP/dV = - (d/dV)dE/dV = - dE^2/da^2 * da^2/dV^2
 ```
-So using the chain rule we can calculate each term separately. 
+using the chain rule to re-write these derivatives in terms of a more easily controlled parameter, ie, the lattice constant. 
 
-Then we can calculate the derivative `dP/dV = dP/da * da/dV` using finite differences. In particular, we can use a five point formula. 
+Then we can calculate the derivative using finite differences. In particular, we can use a five point formula. 
 ```math
-    dP/da = 1/(12h)(P(x-2h) - 8P(x-h) +8P(x+h) - P(x+2h))
+    P''(a) = 1/(12h^2)(-P(x-2h) + 16P(x-h) - 30P(x) + 16P(x+h) - P(x+2h))
 ```
+To this end then, the structure of code is as follows
+1. We know from part 1 the predicted equilibrium lattice constant `a0`. Then all we need to do is to run scf calculations, updating the lattice constant to `a0 -2h, a0-h, a0+h, a0+2h`, record the energy values `E=E(a)` and volume values `V=V(a)`. 
+2. Then we can calculate the two second derivatives and then take their product to hopefully obtain our result. 
