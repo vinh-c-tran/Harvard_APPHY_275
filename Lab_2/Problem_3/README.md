@@ -37,4 +37,21 @@ K_POINTS automatic
  8 8 8 0 0 0
 
 ```
+## Initial Results 
+We can test to see if our input file works correctly (before iterating over other parameters) and we get the following results
+```
+Forces acting on atoms (cartesian axes, Ry/au):
+
+     atom    1 type  1   force =     0.00000000    0.00000000   -0.11881234
+     atom    2 type  1   force =     0.00000000    0.00000000    0.11881234
+
+     Total force =     0.168026     Total SCF correction =     0.002313
+```
+We find that the force acting on one atom is `0.11881234` Ry/Bohr. There is also a `Total force = 0.168026` which corresponds to the square root of the sum of the square of the forces acting on each individual atom, ie, `Total force` here is equal to `Sqrt[(-0.11881234)^2 + (0.11881234)^2]`. For the purposes of this problem, we're just interested in the force on a single atom, ie, the former. 
+
+## Python Scripting 
+We can largely use the same input file generating functions, modifying the parsing function so that it searched for the force 
+
+
+## Results 
 
