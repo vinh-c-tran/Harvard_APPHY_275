@@ -18,7 +18,7 @@ There are two ways to find the equilibrium lattice constant: manually or via a P
 In part III we will do the automatic option to become more familiar with other methods in quantum espresso, but for part I, we will do this manually. 
 
 Starting with the following generic scf input file
-```
+```fortran
 &control
     calculation = 'scf' 
     prefix = 'Germanium',
@@ -43,4 +43,28 @@ K_POINTS automatic
  8 8 8 0 0 0
 
 ```
-we can then generate a lattice array 
+we can then generate a lattice array in Python
+```python3
+    lattice_array = np.linspace(9.7, 11.7, 10)
+```
+and use the following script to update the input file with a new lattice constant at each step 
+```python3
+def ecutwfc_subs(file, lattice_constant):
+    """ opens input file file and changes value for celldm(1) = lattice constant """
+    
+    # prepare new string
+    new_string = "    celldm(1) = " + str(lattice_constant) + ",\n"
+    
+    # open the file 
+    with open(file,'r') as input_file:
+        lines = input_file.readlines()
+    with open(file, 'w') as input_file:
+        for line in lines:
+            if line.split()[0] == 'celldm(1)':
+                input_file.write(new_string)
+            else:
+                input_file.write(line) 
+```
+We can then put everything together including the command line call `pw.x -in ge.scf.in > ge.scf.out` using `subprocess` into a single function call
+```python3 
+```
