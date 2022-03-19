@@ -22,7 +22,7 @@ The core of each PW scf calculation starts with an input file that we can call `
 &control
     calculation = 'scf' 
     prefix = 'Germanium',
-    pseudo_dir = '/Users/vinhtran/Documents/GitHub/DFT/First_Principles_Energy_Methods/Problem_1',
+    pseudo_dir = '.',
     outdir = '.',
 /
 &system
