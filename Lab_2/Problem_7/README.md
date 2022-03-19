@@ -49,7 +49,7 @@ we can then generate a lattice array in Python
 ```
 and use the following script to update the input file with a new lattice constant at each step 
 ```python3
-def ecutwfc_subs(file, lattice_constant):
+def lattice_subs(file, lattice_constant):
     """ opens input file file and changes value for celldm(1) = lattice constant """
     
     # prepare new string
@@ -67,4 +67,24 @@ def ecutwfc_subs(file, lattice_constant):
 ```
 We can then put everything together including the command line call `pw.x -in ge.scf.in > ge.scf.out` using `subprocess` into a single function call
 ```python3 
+def energy_vs_lattice(lattice_array):
+    """ performs problem 7 part 1 calculations """
+    
+    # declare energy array of same size as cut off array 
+    energy_array = np.zeros(len(lattice_array))
+    
+    for i in range(len(lattice_array)):
+        # update input file 
+        lattice_subs("Ge.scf.in", lattice_array[i])
+        
+        # call pw.x 
+        subprocess.run('pw.x -in Ge.scf.in > ge.scf.out', shell=True)
+        
+        # parse output file 
+        result = parse_output('ge.scf.out')
+        
+        # get force and append to array 
+        energy_array[i] = result['energy']
+        
+    return energy_array
 ```
