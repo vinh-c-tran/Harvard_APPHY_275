@@ -50,7 +50,52 @@ Forces acting on atoms (cartesian axes, Ry/au):
 We find that the force acting on one atom is `0.11881234` Ry/Bohr. There is also a `Total force = 0.168026` which corresponds to the square root of the sum of the square of the forces acting on each individual atom, ie, `Total force` here is equal to `Sqrt[(-0.11881234)^2 + (0.11881234)^2]`. For the purposes of this problem, we're just interested in the force on a single atom, ie, the former. 
 
 ## Python Scripting 
-We can largely use the same input file generating functions, modifying the parsing function so that it searched for the force 
+We try a different function here. We start by explicitly writing an input file by hand, noting that all we need to do is change the `ecutwfc` value. So we write a function that takes a text file, parses through, re-writes the new line, and exits. 
+```python3
+def ecutwfc_subs(file, cut_off_value):
+    """ opens input file file and changes value for ecutwfc """
+    
+    # prepare new string
+    new_string = "    ecutwfc = " + str(cut_off_value) + ",\n"
+    
+    # open the file 
+    with open(file,'r') as input_file:
+        lines = input_file.readlines()
+    with open(file, 'w') as input_file:
+        for line in lines:
+            if line.split()[0] == 'ecutwfc':
+                input_file.write(new_string)
+            else:
+                input_file.write(line) 
+```
+Then, declaring an array of cut off energies 
+```python3
+cut_off_array = np.arange(5,85,5)
+```
+We can then encapsulate the main part of the problem in the following script
+```python3
+def problem_3(cut_off_array):
+    """ performs problem 3 calculations """
+    
+    # declare force array of same size as cut off array 
+    force_array = np.zeros(len(cut_off_array))
+    
+    for i in range(len(cut_off_array)):
+        # update input file 
+        ecutwfc_subs("Ge.scf.in", cut_off_array[i])
+        
+        # call pw.x 
+        subprocess.run('pw.x -in Ge.scf.in > ge.scf.out', shell=True)
+        
+        # parse output file 
+        result = parse_output('ge.scf.out')
+        
+        # get force and append to array 
+        force_array[i] = result['force']
+        
+    return force_array
+```
+
 
 
 ## Results 
