@@ -89,6 +89,7 @@ def energy_vs_lattice(lattice_array):
     return energy_array
 ```
 ### Part 1: Results 
+We perform a fit to the Birch-Murnaghan equation of state using `scipy.optimize.curve_fit` which gives us `a0 = 10.902` which is rather close to the experimental value of `a0 = 10.7`. 
 <p align="center">
 <img width="708" alt="Screen Shot 2022-03-19 at 5 21 25 AM" src="https://user-images.githubusercontent.com/76876169/159120884-5b3c3ffa-6039-4d88-8273-8ab084289e2e.png">
 </p>
@@ -108,3 +109,27 @@ Then we can calculate the derivative using finite differences. In particular, we
 To this end then, the structure of code is as follows
 1. We know from part 1 the predicted equilibrium lattice constant `a0`. Then all we need to do is to run scf calculations, updating the lattice constant to `a0 -2h, a0-h, a0+h, a0+2h`, record the energy values `E=E(a)` and volume values `V=V(a)`. 
 2. Then we can calculate the two second derivatives and then take their product to hopefully obtain our result. 
+
+We can use the same code as in Part I, modifying the python parsing function to also extract the unit cell volume
+```python3
+def parse_output(outfile):
+    """ Parses the quantum espresso output file """
+    
+    with open(outfile, 'r') as outf:
+        for line in outf:
+            if (line.lower().startswith('     lattice parameter (alat)')):
+                lattice_constant = float(line.split()[-2])
+            if (line.lower().startswith('!    total energy')):
+                total_energy = float(line.split()[-2]) * 13.605698066
+            if (line.lower().startswith('     unit-cell volume')):
+                volume = float(line.split()[-2])
+    
+    result = {'energy': total_energy, 'lattice': lattice_constant, 'volume': volume}
+    return result 
+```
+We define the following array for the lattice points
+```python
+h = 0.01
+a0 = 10.902
+lattice_array = np.array([a0-2*h, a0-h, a0, a0+h, a0+2*h])
+```
