@@ -103,5 +103,23 @@ Plotting the results, we find
 <p align="center">
 <img width="739" alt="Screen Shot 2022-03-18 at 7 18 56 PM" src="https://user-images.githubusercontent.com/76876169/159103022-3ba3f0ad-232b-4b79-8799-93f5467e4d9f.png">
 </p>
-
+and through some analysis we can find that convergence occurs around 35-40 Rydberg 
+```
+Cut Off: 5 , Difference: 0.0
+Cut Off: 10 , Difference: 1.10741024
+Cut Off: 15 , Difference: -1.7823405600000002
+Cut Off: 20 , Difference: 0.025806739999999995
+Cut Off: 25 , Difference: 0.008259340000000004
+Cut Off: 30 , Difference: 0.004346849999999999
+Cut Off: 35 , Difference: 0.00039873999999999465
+Cut Off: 40 , Difference: 6.0930000000000706e-05
+Cut Off: 45 , Difference: -5.1540000000002695e-05
+Cut Off: 50 , Difference: 3.11600000000023e-05
+Cut Off: 55 , Difference: 9.220000000004225e-06
+Cut Off: 60 , Difference: -2.130000000002963e-06
+Cut Off: 65 , Difference: 2.264999999999906e-05
+Cut Off: 70 , Difference: 5.480000000000762e-05
+Cut Off: 75 , Difference: -6.49600000000028e-05
+Cut Off: 80 , Difference: 2.4360000000001047e-05
+```
 
