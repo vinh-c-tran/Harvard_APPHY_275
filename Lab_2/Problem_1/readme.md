@@ -59,6 +59,23 @@ graph LR;
 ## Python Scripting in Jupyter 
 We define a few functions that create an input file 
 
+### Parsing Function
+We want to parse the output file and extract the energy. We can do this using the following function which goes line by line in the output file to find the correct line, converts the line into an array of strings (using Python split), and selects the correct element in the array to be stored in a dictionary which is returned. 
+```
+def parse_output(outfile):
+    """ Parses the quantum espresso output file """
+    
+    with open(outfile, 'r') as outf:
+        for line in outf:
+            if (line.lower().startswith('     lattice parameter (alat)')):
+                lattice_constant = float(line.split()[-2]) * 0.529177
+            if (line.lower().startswith('!    total energy')):
+                total_energy = float(line.split()[-2]) * 13.605698066
+    
+    result = {'energy': total_energy, 'lattice': lattice_constant}
+    return result 
+```
+
 
 ## Results 
 As we see from our results that convergence occurs rather quickly as `ecutwtc` increases. 
