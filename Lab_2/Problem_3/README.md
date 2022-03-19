@@ -37,6 +37,8 @@ K_POINTS automatic
  8 8 8 0 0 0
 
 ```
+So from this our parameters are: `lattice constant = 10.690181 Bohr`, using `K_Points = 8 x 8 x 8`, with Germanium again as a diamond FCC structure. 
+
 ## Initial Results 
 We can test to see if our input file works correctly (before iterating over other parameters) and we get the following results in our output file. 
 ```
