@@ -38,7 +38,7 @@ K_POINTS automatic
 
 ```
 ## Initial Results 
-We can test to see if our input file works correctly (before iterating over other parameters) and we get the following results
+We can test to see if our input file works correctly (before iterating over other parameters) and we get the following results in our output file. 
 ```
 Forces acting on atoms (cartesian axes, Ry/au):
 
