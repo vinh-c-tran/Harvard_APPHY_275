@@ -97,5 +97,5 @@ def energy_vs_lattice(lattice_array):
 ## Part 2
 We start by noting that  
 ```math
-    P = - \partial E
+    $P = - \partial E$
 ```
