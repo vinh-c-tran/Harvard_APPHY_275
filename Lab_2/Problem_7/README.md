@@ -101,4 +101,7 @@ We start by noting that
 ```
 So using the chain rule we can calculate each term separately. 
 
-Then we can calculate the derivative using finite differences. In particular, we can use a five point formula. 
+Then we can calculate the derivative `dP/dV = dP/da * da/dV` using finite differences. In particular, we can use a five point formula. 
+```math
+    dP/da = 1/(12h)(P(x-2h) - 8P(x-h) +8P(x+h) - P(x+2h))
+```
