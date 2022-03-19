@@ -43,7 +43,11 @@ K_POINTS automatic
  8 8 8 0 0 0
 
 ```
-There are many parameters and things to consider and explanations can be found in the quantum espresso pw input file documentation. Relevant for us though is `ecutwfc` which specifies the cut off energy in Ry. So if we were to run this program for this specific input file, we would be able to get the total energy for a cut off energy of 80.0 Ry. Then in principle, we could simply change this value in the input file and manually call `pw.x -in ge.scf.in > ge.scf.out` each time and record the subsequent energy value. However, this becomes tedious. There is a better way! 
+There are many parameters and things to consider and explanations can be found in the quantum espresso pw input file documentation. 
+
+One important note is how we implemented the diamond structure here. We call `ibrav = 2` which sets this up as an FCC lattice. We include two `Ge` atoms with their positions given under `ATOMIC_POSITIONS`. 
+
+Relevant for us though is `ecutwfc` which specifies the cut off energy in Ry. So if we were to run this program for this specific input file, we would be able to get the total energy for a cut off energy of 80.0 Ry. Then in principle, we could simply change this value in the input file and manually call `pw.x -in ge.scf.in > ge.scf.out` each time and record the subsequent energy value. However, this becomes tedious. There is a better way! 
 
 There are many ways to do this: such as running a shell script or using TCL scripts. Likewise though, we can do this in Python, and in particular use a Jupyter notebook which allows a convenient interface for plotting. 
 
