@@ -96,4 +96,6 @@ def energy_vs_lattice(lattice_array):
 
 ## Part 2
 We start by noting that  
-<img src="https://render.githubusercontent.com/render/math?math=P = -\partial E/\partial V">
+```math
+    P = - \partial E
+```
