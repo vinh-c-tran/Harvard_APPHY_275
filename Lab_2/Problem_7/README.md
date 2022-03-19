@@ -17,7 +17,7 @@ There are two ways to find the equilibrium lattice constant: manually or via a P
 
 In part III we will do the automatic option to become more familiar with other methods in quantum espresso, but for part I, we will do this manually. 
 
-Starting with the following generic scf input file
+Starting with the following generic self-consistent field input file
 ```fortran
 &control
     calculation = 'scf' 
