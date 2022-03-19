@@ -97,5 +97,8 @@ def energy_vs_lattice(lattice_array):
 ## Part 2
 We start by noting that  
 ```math
-    $P = - \partial E$
+    P = - dE/dV = - dE/da * da/dV
 ```
+So using the chain rule we can calculate each term separately. 
+
+Then we can calculate the derivative using finite differences. In particular, we can use a five point formula. 
