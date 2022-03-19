@@ -1,0 +1,3 @@
+# Problem 7: Equilibrium Lattice Constant and Bulk Modulus
+
+In this problem you will calculate the equilibrium lattice constant and bulk modulus of Ge. Usually, we are interested in quantities such as forces or energy differences, not absolute energies. Therefore, for this problem use the cutoff and k-point criteria that you determined for the force and energy difference calculation. (In general, to be absolutely safe you should test convergence specifically for the quantity you are interested in. So, ideally, we would test convergence of lattice constant as a function of energy cutoff and k-point grid size, but we are not going to do this.)
