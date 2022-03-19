@@ -18,7 +18,7 @@ When we perform a SCF calculation, we have many parameters that we can tune, one
 ## Input File
 
 The core of each PW scf calculation starts with an input file that we can call `ge.scf.in` for our case of a scf calculation for Ge. To run this calculation, we would call `pw.x -in ge.scf.in > ge.scf.out` where `ge.scf.out` is the output file (assuming that `pw.x` is in our path). In particular, the input file that we use will look like 
-```
+```fortran
 &control
     calculation = 'scf' 
     prefix = 'Germanium',
@@ -65,7 +65,7 @@ We define a few functions that create an input file
 
 ### Parsing Function
 We want to parse the output file and extract the energy. We can do this using the following function which goes line by line in the output file to find the correct line, converts the line into an array of strings (using Python split), and selects the correct element in the array to be stored in a dictionary which is returned. 
-```
+```python3
 def parse_output(outfile):
     """ Parses the quantum espresso output file """
     
