@@ -15,5 +15,32 @@ There are two ways to find the equilibrium lattice constant: manually or via a P
 - Manually: We can run scf calculations while varying the lattice constant `a`. Then we would get `E = E(a)`. Then to this data we can fit it to either a second order Taylor expansion or to an equation of state model which would predict a value for the equilibrium lattice constant. 
 - "Automatically": We can run a calculation with `calculation = vc-relax`. This option allows for the atoms in the structure to move and optimizes the positions and hence the lattice constant. 
 
-Below we will do the automatic option to become more familiar with other methods in quantum espresso. 
+In part III we will do the automatic option to become more familiar with other methods in quantum espresso, but for part I, we will do this manually. 
 
+Starting with the following generic scf input file
+```
+&control
+    calculation = 'scf' 
+    prefix = 'Germanium',
+    pseudo_dir = '.',
+    outdir = '.',
+/
+&system
+    ibrav = 2,
+    celldm(1) = 10.690181,
+    nat = 2,
+    ntyp = 1,
+    ecutwfc = 20.0,
+/
+&electrons
+/
+ATOMIC_SPECIES
+ Ge 72.64 ge_pbe_v1.4.uspp.F.UPF
+ATOMIC_POSITIONS
+ Ge 0.00 0.00 0.00
+ Ge 0.25 0.25 0.25
+K_POINTS automatic
+ 8 8 8 0 0 0
+
+```
+we can then generate a lattice array 
