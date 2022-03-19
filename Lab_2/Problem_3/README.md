@@ -12,7 +12,7 @@ For this problem we need to do two things: create a new structure with a displac
 2. For the latter, we need to update the input file `ge.prob3.in` to include a `tprnfor = .true.` statement in the `CONTROL` card. 
 
 So for instance, our input file could look like 
-```
+```fortran
 &control
     prefix = 'Germanium',
     pseudo_dir = '.',
