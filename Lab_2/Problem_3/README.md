@@ -99,4 +99,5 @@ def problem_3(cut_off_array):
 
 
 ## Results 
+Plotting the results, we find [force_vs_cutoff.pdf](https://github.com/vinh-c-tran/Harvard_APPHY_275/files/8308429/force_vs_cutoff.pdf)
 
