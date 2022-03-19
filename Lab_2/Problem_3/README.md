@@ -100,6 +100,8 @@ def problem_3(cut_off_array):
 
 ## Results 
 Plotting the results, we find 
+<p align="center">
 <img width="739" alt="Screen Shot 2022-03-18 at 7 18 56 PM" src="https://user-images.githubusercontent.com/76876169/159103022-3ba3f0ad-232b-4b79-8799-93f5467e4d9f.png">
+</p>
 
 
