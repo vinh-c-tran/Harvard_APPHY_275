@@ -61,5 +61,6 @@ graph LR;
 
 
 ## Results 
+<p align="center">
 <img width="600" alt="Screen Shot 2022-03-18 at 4 46 27 PM" src="https://user-images.githubusercontent.com/76876169/159097636-582cf54e-d133-4b8d-901f-c9fc7980bc18.png">
-
+</p>
