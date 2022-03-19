@@ -104,6 +104,7 @@ Plotting the results, we find
 <img width="739" alt="Screen Shot 2022-03-18 at 7 18 56 PM" src="https://user-images.githubusercontent.com/76876169/159103022-3ba3f0ad-232b-4b79-8799-93f5467e4d9f.png">
 </p>
 and through some analysis we can find that convergence occurs around 35-40 Rydberg 
+
 ```
 Cut Off: 5 , Difference: 0.0
 Cut Off: 10 , Difference: 1.10741024
@@ -122,4 +123,5 @@ Cut Off: 70 , Difference: 5.480000000000762e-05
 Cut Off: 75 , Difference: -6.49600000000028e-05
 Cut Off: 80 , Difference: 2.4360000000001047e-05
 ```
+And 
 
