@@ -89,7 +89,7 @@ def energy_vs_lattice(lattice_array):
     return energy_array
 ```
 ### Part 1: Results 
-We perform a fit to the Birch-Murnaghan equation of state using `scipy.optimize.curve_fit` which gives us `a0 = 10.902` which is rather close to the experimental value of `a0 = 10.7`. 
+We perform a fit to the Birch-Murnaghan equation of state [1] using `scipy.optimize.curve_fit` which gives us `a0 = 10.902` which is rather close to the experimental value of `a0 = 10.7`. 
 <p align="center">
 <img width="708" alt="Screen Shot 2022-03-19 at 5 21 25 AM" src="https://user-images.githubusercontent.com/76876169/159120884-5b3c3ffa-6039-4d88-8273-8ab084289e2e.png">
 </p>
@@ -133,3 +133,8 @@ h = 0.01
 a0 = 10.902
 lattice_array = np.array([a0-2*h, a0-h, a0, a0+h, a0+2*h])
 ```
+and loop through this array, perform SCF calculations, and writing out the data to arrays. 
+
+
+# References
+Sholl, David. "Density Functional Theory. A Practical Introduction". Pg. [38]
