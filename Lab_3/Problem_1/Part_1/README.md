@@ -6,5 +6,5 @@ Using PWscf, optimize the lattice parameters for both BCC and HCP Fe (i.e., a fo
 ## Background/Setup 
 We will need to write an input file to pass to `pw.x` that builds a BCC and HCP structure for `Fe`, then call a relaxation calculation to determine the ideal lattice constants. 
 1. To do the former, we can note that under the `SYSTEM` card that `ibrav` indicates the crystal structure. Specifically, setting `ibrav = 3` corresponds to a BCC structure and `ibrav = 4` corresponds to a HCP structure.  
-2. For the latter, we can call a `calculation = 'sc-relax'` in the `control` card and extract the converged constants at the end of the output file `fe.scf.out`. 
+2. For the latter, we can call a `calculation = 'vc-relax'` in the `control` card and extract the converged constants at the end of the output file `fe.scf.out`. 
 
