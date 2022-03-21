@@ -38,6 +38,6 @@ This generates a cif file that we can then import into a visualizer like Vesta. 
 <img width="325" alt="Screen Shot 2022-03-21 at 8 17 33 AM" src="https://user-images.githubusercontent.com/76876169/159292587-1268b95e-6613-4bc6-9186-6c08bc824d94.png">
 </p> 
 
-Then we can import this into a quantum espresso  
+Then we can import this into a quantum espresso call 
 
-### 
+### Part 2: 
