@@ -12,7 +12,7 @@ We will need to write an input file to pass to `pw.x` that builds a BCC and HCP 
 One final thing to take into consideration is the fact that iron is magnetic so we take this spin-polarization into account by adding a `nspin` and `starting_magnetization` variables. This is in addition to the metallic variables of `occupations`, `smearing`, and `degauss`. 
 
 ### BCC Fe
-We start with the following for BCC Fe. In particular, we choose `ibrav = 3` and call a `calculation = 'vc-relax'` with 
+We start with the following for BCC Fe. In particular, we choose `ibrav = 3` and call a `calculation = 'vc-relax'` with the following input file. 
 
 ```fortran
  &CONTROL
@@ -58,3 +58,19 @@ K_POINTS automatic
    6   6   4   1   1   1 
 ! coarse k-mesh as to speed-up
 ```
+After calling this script in the terminal using `pw.x -in <input_file.in> > <output_file.out>` we then want to extract the lattice parameter. In this case, we can do this by checking the positions before and after the relaxation. These are usually given in units of the lattice parameters (alat) and we can compare, using our initial guess to extract it.
+
+Calling `grep "a(1) = (" <output_file>` for instance would return something of the form (for BCC lattice)
+```terminal
+               a(1) = (   1.000000   0.000000   0.000000 )  
+               a(1) = (   0.843806  -0.000000   0.000000 )  
+```
+which we know has `v(1) = a (1, 0, 0)` so we can use
+```math
+ 0.843806/1.00 = a_relaxed / a_initial
+```
+to solve for `a_relaxed`. In particular, we find `a_relaxed = 0.843806 * 4.8 = 4.05` Bohr. 
+
+### HCP Fe
+
+
