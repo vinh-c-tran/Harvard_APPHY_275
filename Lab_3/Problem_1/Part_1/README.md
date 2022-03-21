@@ -72,5 +72,5 @@ which we know has `v(1) = a (1, 0, 0)` so we can use
 to solve for `a_relaxed`. In particular, we find `a_relaxed = 0.843806 * 4.8 = 4.05` Bohr. 
 
 ### HCP Fe
-
+For HCP we need to do a few things. First, for HCP we need to specify the structure. We call `ibrav = 4` but in addition to `celldm(1) = a` we need to specify `celldm(3) = c/a` 
 
