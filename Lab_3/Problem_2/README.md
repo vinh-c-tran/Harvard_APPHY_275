@@ -39,5 +39,47 @@ This generates a cif file that we can then import into a visualizer like Vesta. 
 </p> 
 
 Then we can import this into a quantum espresso call 
+``` fortran 
+ &CONTROL
+    calculation = 'vc-relax',
+    prefix      = 'Zn',
+    outdir      = '/tmp/',
+    pseudo_dir  = '/Users/vinhtran/Desktop/materials-for-max-qe2021-online-school-master/pseudo',
+ /
+
+ &SYSTEM
+    ibrav     =  4,
+    celldm(1) =  4.8,
+    celldm(3) =  1.8,
+    nat       =  2,
+    ntyp      =  1,
+
+    ecutwfc =  30.0,
+    ecutrho =  240.0,
+    
+    occupations =  'smearing',
+    smearing    =  'methfessel-paxton',
+    degauss     =  0.03,
+ /
+
+ &ELECTRONS
+    conv_thr = 1d-10,
+ /
+ 
+ &IONS
+ /
+ &CELL
+ /
+
+ATOMIC_SPECIES
+   Zn 1.0 Zn.pbe-van.UPF
+   
+ATOMIC_POSITIONS crystal
+   Zn       0.000000000   0.000000000   0.000000
+   Zn       0.666666667   0.333333333   0.500000
+
+K_POINTS automatic
+   6   6   4   1   1   1 
+```
 
 ### Part 2: 
