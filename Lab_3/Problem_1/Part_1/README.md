@@ -11,3 +11,50 @@ We will need to write an input file to pass to `pw.x` that builds a BCC and HCP 
 
 One final thing to take into consideration is the fact that iron is magnetic so we take this spin-polarization into account by adding a `nspin` and `starting_magnetization` variables. This is in addition to the metallic variables of `occupations`, `smearing`, and `degauss`. 
 
+### BCC Fe
+We start with the following for BCC Fe. In particular, we choose `ibrav = 3` and call a `calculation = 'vc-relax'` with 
+
+```fortran
+ &CONTROL
+    calculation = 'vc-relax',
+    prefix      = 'Fe',
+    outdir      = '/tmp/',
+    pseudo_dir  = '.',
+ /
+
+ &SYSTEM
+    ibrav     =  3,
+    celldm(1) =  4.8,
+    nat       =  1,
+    ntyp      =  1,
+
+    ecutwfc =  30.0,
+    ecutrho =  240.0,
+    
+    occupations =  'smearing',
+    smearing    =  'methfessel-paxton',
+    degauss     =  0.03,
+
+    nspin = 2, 
+    starting_magnetization(1) = 0.6,
+ /
+
+ &ELECTRONS
+    conv_thr = 1d-10,
+ /
+ 
+ &IONS
+ /
+ &CELL
+ /
+
+ATOMIC_SPECIES
+   Fe 1.0 Fe.pbe-spn-rrkjus_psl.1.0.0.UPF
+   
+ATOMIC_POSITIONS crystal
+   Fe       0.000000000   0.000000000   0.000000
+
+K_POINTS automatic
+   6   6   4   1   1   1 
+! coarse k-mesh as to speed-up
+```
