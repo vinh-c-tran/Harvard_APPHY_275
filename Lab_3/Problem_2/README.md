@@ -10,3 +10,34 @@ PbTiO3 is a perovskite oxide which is ferroelectric. The ferroelectric response 
 3. Now allow both the Ti atom and the O atoms to relax and find the minimum energy structure, using the minimum-energy Ti displacement from part (B) as your starting configuration. Report the final atomic positions and final energy.
 
 4. Which phase is the most energetically stable for PbTiO3 and how does that relate to the ferroelectric behavior of this material?
+
+## Part 1: Energy of Cubic PbTiO3
+First, we need to generate the structure of Cubic PbTiO3. This is a slightly more involved structure so to generate this structure we can use ASE, Atomic Simulation Environment. In particular, we can use the following script 
+``` python3
+from ase import Atom
+from ase.io import write 
+import numpy as np 
+
+def make_struc(alat, displacement=0):
+    """
+    Creates the crystal structure using ASE.
+    :param alat: Lattice parameter in angstrom
+    :return: structure object converted from ase
+    """
+    
+    lattice = alat * np.identity(3)
+    symbols = ['Pb', 'Ti', 'O', 'O', 'O']
+    sc_pos = [[0,0,0], [0.5,0.5,0.5 + displacement], [0,0.5,0.5], [0.5,0,0.5], [0.5,0.5,0]]
+    perov = Atoms(symbols=symbols, scaled_positions=sc_pos, cell=lattice)
+    
+    # check how your cell looks like
+    write('s.cif', perov)
+```
+This generates a cif file that we can then import into a visualizer like Vesta. In our case, we have 
+<p align = 'center'> 
+<img width="325" alt="Screen Shot 2022-03-21 at 8 17 33 AM" src="https://user-images.githubusercontent.com/76876169/159292587-1268b95e-6613-4bc6-9186-6c08bc824d94.png">
+</p> 
+
+Then we can import this into a quantum espresso  
+
+### 
