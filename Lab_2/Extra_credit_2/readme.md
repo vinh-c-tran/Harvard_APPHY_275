@@ -13,5 +13,5 @@ This results in the band structure being stored in an output file that we can th
 
 ## Results 
 <p align = center> 
-[germanium_bands.pdf](https://github.com/vinh-c-tran/Harvard_APPHY_275/files/8343108/germanium_bands.pdf)
+<img width="459" alt="Screen Shot 2022-03-24 at 8 43 47 AM" src="https://user-images.githubusercontent.com/76876169/159955144-361af674-1e2b-4572-b3e3-1f4067174513.png">
 </p> 
