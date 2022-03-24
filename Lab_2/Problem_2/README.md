@@ -65,3 +65,6 @@ def parse_output(outfile):
 
 
 ## Results 
+<p align = center> 
+<img width="1191" alt="Screen Shot 2022-03-23 at 7 13 20 PM" src="https://user-images.githubusercontent.com/76876169/159828383-f2d16621-3176-42f5-89e9-36d5457d5ea8.png">
+    </p>
