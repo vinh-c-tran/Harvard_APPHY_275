@@ -1,18 +1,17 @@
-# Problem 1: Convergence of Absolute Energies with Respect to Cutoff Energies
+# Problem 2: Convergence of Absolute Energies with Respect to K-Points
 
-A. Using Quantum Espresso PWscf, calculate the energy of Ge in the diamond structure as a function of palne-wave cutoff energy. A good range to try is 5-80 Ry, doing calculations at increments of 5 Ry, keeping other variables constant. Record and plot final results. Specify when you reach the level of convewrgence of aorund 5 meV/atom. Note that the code calculates energy per primitive cell (not atom). 
+A. Using PWscf, calculate the energy as a function of the size of the k-point grid used to integrate the Brillouin zone. For each grid, record the number of unique k-points. Record the computational time. When changing the size of the k-point grid, make sure to keep your other variables fixed (lattice constant, plane-wave cutoff, etc). One may choose a lower cutoff than the “converged” cutoff in the last problem. There are some “cross effects” in doing so, however we assume these are small.
 
-B. Do you see a trend in your calculated energies and calculation time with respect to the cutoff? Is this what you expect and why? 
+B. Do you see a trend in your calculated energies and computation times with respect to the k-point grid size? If you see a trend, is this what you expect and why?
 
-C. Cubic unit cell vs primitive cell. Advantages and disadvantages of both?
 
 ## Background Information
 
-This problem allows for the use of two main ideas
-- Setting up a standard SCF calculation in quantum espresso for a specified structure (and get the absolute energy).
-- Scripting to automate the changing/iteration of the cut off energies. This we can do in python to generate the input files and call `pw.x` via command line tools in python. 
+This problem tests convergence with respect to k-points; so it's similar to problem 1 except we just change the thing that we vary. So we proceed in the same manner. 
+- We set up a standard SCF calculation in quantum espresso for a specified structure (and get the absolute energy).
+- Scripting to automate the changing/iteration of the cut off energies. We start with a template input file and use Python to update the k-points attribute at each run and then call `pw.x` via command line tools in python. 
+- Read out the data to a file for plotting the energy versus number of k-points used. 
 
-When we perform a SCF calculation, we have many parameters that we can tune, one of which being the plane-wave cut off as we truncate our sum over plane waves for numerical calculations. As we increase the energy cut off, we'd expect our results to converge closer to the converged value. 
 
 
 ## Input File
@@ -43,28 +42,12 @@ K_POINTS automatic
  8 8 8 0 0 0
 
 ```
-There are many parameters and things to consider and explanations can be found in the quantum espresso pw input file documentation. 
-
-One important note is how we implemented the diamond structure here. We call `ibrav = 2` which sets this up as an FCC lattice. We include two `Ge` atoms with their positions given under `ATOMIC_POSITIONS`. 
-
-Relevant for us though is `ecutwfc` which specifies the cut off energy in Ry. So if we were to run this program for this specific input file, we would be able to get the total energy for a cut off energy of 80.0 Ry. Then in principle, we could simply change this value in the input file and manually call `pw.x -in ge.scf.in > ge.scf.out` each time and record the subsequent energy value. However, this becomes tedious. There is a better way! 
-
-There are many ways to do this: such as running a shell script or using TCL scripts. Likewise though, we can do this in Python, and in particular use a Jupyter notebook which allows a convenient interface for plotting. 
-
-```mermaid
-graph LR;
-    id1([Input File]) --> id2([pw.x -in ge.scf.in > ge.scf.out]);
-    id2 --> id3([Output File]);
-    id3 --> id4([Data Array]);
-    id3 --> id5([Update ecutwfc]);
-    id5 --> id1; 
-```
 
 ## Python Scripting in Jupyter 
-We define a few functions that create an input file 
 
 ### Parsing Function
 We want to parse the output file and extract the energy. We can do this using the following function which goes line by line in the output file to find the correct line, converts the line into an array of strings (using Python split), and selects the correct element in the array to be stored in a dictionary which is returned. 
+
 ```python3
 def parse_output(outfile):
     """ Parses the quantum espresso output file """
@@ -82,7 +65,3 @@ def parse_output(outfile):
 
 
 ## Results 
-As we see from our results that convergence occurs rather quickly as `ecutwtc` increases. 
-<p align="center">
-<img width="600" alt="Screen Shot 2022-03-18 at 4 46 27 PM" src="https://user-images.githubusercontent.com/76876169/159097636-582cf54e-d133-4b8d-901f-c9fc7980bc18.png">
-</p>
