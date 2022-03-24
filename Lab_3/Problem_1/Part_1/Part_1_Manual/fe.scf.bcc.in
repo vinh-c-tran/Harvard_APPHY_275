@@ -1,0 +1,30 @@
+&control
+    calculation = 'scf',
+    restart_mode = 'from_scratch',
+    prefix = 'fe',
+    pseudo_dir = '.',
+    outdir = '.',
+/
+&system
+    ibrav = 3,
+    celldm(1) = 6.42,
+    nat = 1,
+    ntyp = 1,
+    ecutwfc = 25.0,
+    occupations= 'smearing', smearing='mv', degauss=0.01,
+    ecutrho = 200.0, 
+    nspin = 2, 
+    starting_magnetization(1) = 0.6
+/
+&electrons
+/
+&ions
+/
+&cell
+/ 
+ATOMIC_SPECIES
+ Fe 55.845 Fe.pbe-spn-kjpaw_psl.0.2.1.UPF
+ATOMIC_POSITIONS crystal
+ Fe 0.00 0.00 0.00
+K_POINTS automatic
+ 8 8 8 0 0 0 
