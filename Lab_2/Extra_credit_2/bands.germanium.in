@@ -1,0 +1,6 @@
+&BANDS
+    prefix = 'Germanium' 
+    outdir = './temp' 
+    filband = 'germanium.bands.out' 
+/ 
+    
