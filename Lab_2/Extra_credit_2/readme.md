@@ -12,3 +12,6 @@ This results in the band structure being stored in an output file that we can th
 
 
 ## Results 
+<p align = center> 
+[germanium_bands.pdf](https://github.com/vinh-c-tran/Harvard_APPHY_275/files/8343108/germanium_bands.pdf)
+</p> 
