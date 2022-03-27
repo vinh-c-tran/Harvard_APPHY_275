@@ -1,0 +1,40 @@
+&CONTROL
+  calculation = 'relax'
+  prefix = 'PbTiO3'
+  outdir = './temp'
+  pseudo_dir = '/Users/vinhtran/Documents/GitHub/Harvard_APPHY_275/Lab_3/Problem_2/Part_1/pseudo'
+  forc_conv_thr = 1.0e-5
+/
+&SYSTEM
+  ibrav = 0
+  celldm(1) = 7.52628589570702
+  nat = 5
+  ntyp = 3
+  ecutwfc = 30.0
+  !occupations = 'smearing'
+  !degauss = 0.02
+  !smearing = 'gauss'
+/
+&ELECTRONS
+  diagonalization = 'david'
+  mixing_beta = 0.7
+  conv_thr = 1e-07
+/
+&IONS
+/
+CELL_PARAMETERS (alat)
+  1.00  0.00  0.00
+  0.00  1.00  0.00
+  0.00  0.00  1.00
+ATOMIC_SPECIES
+  Pb  207.2 Pb.pbe-dn-kjpaw_psl.0.2.2.UPF
+  Ti  47.867  ti_pbe_v1.4.uspp.F.UPF
+  O 15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+ATOMIC_POSITIONS (alat)
+  Pb  0.00  0.00  0.00
+  Ti  0.50  0.50  0.5003333
+  O 0.50 0.50 0.00
+  O 0.50  0.00  0.50
+  O 0.00  0.50  0.50
+K_POINTS automatic
+  4 4 4 1 1 1

@@ -1,0 +1,42 @@
+&CONTROL
+    calculation = 'vc-relax' 
+    outdir = './temp' 
+    pseudo_dir = '/Users/vinhtran/Documents/GitHub/Harvard_APPHY_275/Lab_3/Problem_1/Part_1' 
+    prefix = 'fe' 
+/
+
+&SYSTEM
+    ibrav = 4
+    celldm(1) = 5.0 
+    celldm(3) = 1.633
+    nat = 2
+    ntyp = 1
+
+    ecutwfc = 30.0 
+    ecutrho = 360.0 
+    nspin = 2
+    starting_magnetization(1) = 0.7
+    
+    occupations = 'smearing' 
+    smearing = 'mp' 
+    degauss = 0.02 
+/
+
+&ELECTRONS
+    electron_maxstep = 200
+/
+
+&IONS
+/ 
+
+&CELL
+    cell_dofree = 'ibrav' 
+/ 
+
+ATOMIC_SPECIES 
+    Fe  55.847  Fe.pbe-spn-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS (crystal) 
+    Fe  0.00    0.00    0.00
+    Fe  0.333333333    -0.333333333    0.333333333
+K_POINTS (automatic) 
+    2 2 1 0 0 0
